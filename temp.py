@@ -6,7 +6,7 @@ This is a temporary script file.
 """
 
 import streamlit as st
-from IPython.display import YouTubeVideo
+#from IPython.display import YouTubeVideo
 
 st.header('병역처분결과서의 결과를 확인하세요')
 
@@ -23,5 +23,5 @@ if st.button('재검대상'):
      
      
      
-video_SD = YouTubeVideo("jWQx2f-CErU?si=qycwg5gnqN0caB0_", width=500) # https://youtu.be/POe9SOEKotk
-display(video_SD)
+#video_SD = YouTubeVideo("jWQx2f-CErU?si=qycwg5gnqN0caB0_", width=500) # https://youtu.be/POe9SOEKotk
+#display(video_SD)
