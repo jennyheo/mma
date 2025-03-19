@@ -23,5 +23,5 @@ if st.button('재검대상'):
      
      
      
-video_SD = YouTubeVideo("POe9SOEKotk", width=500) # https://youtu.be/POe9SOEKotk
+video_SD = YouTubeVideo("jWQx2f-CErU?si=qycwg5gnqN0caB0_", width=500) # https://youtu.be/POe9SOEKotk
 display(video_SD)
