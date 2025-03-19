@@ -4,8 +4,6 @@ Spyder Editor
 
 This is a temporary script file.
 """
-link for requirement.txt
-https://github.com/LalitMahale/Uber_Price_Prediction/blob/main/requirement.txt
 
 import streamlit as st
 import pandas as pd
