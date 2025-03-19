@@ -6,6 +6,7 @@ This is a temporary script file.
 """
 
 import streamlit as st
+from IPython.display import YouTubeVideo, display
 
 st.header('병역처분결과서의 결과를 확인하세요')
 
@@ -19,3 +20,8 @@ if st.button('병역면제'):
      st.write('6급은 병역이 면제됩니다')
 if st.button('재검대상'):
      st.write('7급 치유기간 이후에 다시 검사받으세요')
+     
+     
+     
+video_SD = YouTubeVideo("POe9SOEKotk", width=500) # https://youtu.be/POe9SOEKotk
+display(video_SD)
