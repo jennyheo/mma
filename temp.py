@@ -11,7 +11,7 @@ import numpy as np
 import math
 import random
 
-from IPython.display import YouTubeVideo
+#from IPython.display import YouTubeVideo
 
 st.header('병역처분결과서의 결과를 확인하세요')
 
