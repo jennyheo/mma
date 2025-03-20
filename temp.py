@@ -12,7 +12,7 @@ import numpy as np
 
    
 option = st.selectbox(
-    '병역처분결과중 어떤 항목이 궁금하세요?',
+    st.header ('병역처분결과중 어떤 항목이 궁금하세요?'),
     ('체질량지수','시력','혈압','색각','AST','ALT','간염','Glucoss')
 )
 st.write('선택한 옵션:', option)
