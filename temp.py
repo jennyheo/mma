@@ -11,29 +11,11 @@ from threading import Thread
 import numpy as np
 
    
-    #셀렉트박스 : 여러개 중에서 한개를 선택할 때
-    language = ['Pyhton', 'Java','C','PHP','GO']
-
-    my_choice = st.selectbox('좋아하는 언어를 선택하시오', language)
-
-    st.text( '저는 {}언어를 좋아합니다.'.format(my_choice) )
-
-    if my_choice == language[0] or my_choice == language[3] or  my_choice == language[4]:
-        st.text('배우기 쉽습니다')
-
-    elif my_choice == language[1] or my_choice == language[-3]:
-        st.text('배우기 어렵습니다')
-
-    #멀티셀렉트 : 여러개를 동시에 선택 가능
-    
-    selected_list = st.multiselect('여러개 선택 가능',df.columns)
-
-    print(selected_list)
-
-    if len(selected_list) != 0:
-        st.dataframe(df[selected_list])
-    else :
-        st.text('')
+option = st.selectbox(
+    '어떻게 연락드릴까요?',
+    ('이메일', '집 전화', '휴대폰')
+)
+st.write('선택한 옵션:', option)
 
 
 #from IPython.display import YouTubeVideo
