@@ -54,14 +54,14 @@ cursor.execute('''
     CREATE TABLE IF NOT EXISTS gsdata (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         gshangmok TEXT NOT NULL,
-        intro TEXT NOT NULL, #참고치설명
-        gsvalue1 TEXT NOT NULL, #검사수치시작
-        gsvalue2 TEXT NOT NULL, #검사수치끝
-        v1 TEXT NOT NULL, #여분필드1
-        v2 TEXT NOT NULL, #여분필드2
-        v3 TEXT NOT NULL, #여분필드3
-        v4 TEXT NOT NULL, #여분필드4
-        v5 TEXT NOT NULL #여분필드5
+        intro TEXT NOT NULL, 
+        gsvalue1 TEXT NOT NULL,
+        gsvalue2 TEXT NOT NULL,
+        v1 TEXT NOT NULL,
+        v2 TEXT NOT NULL,
+        v3 TEXT NOT NULL,
+        v4 TEXT NOT NULL,
+        v5 TEXT NOT NULL 
       )
 ''')
 
