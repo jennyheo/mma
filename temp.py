@@ -13,7 +13,7 @@ import numpy as np
    
 option = st.selectbox(
     '병역처분결과중 어떤 항목이 궁금하세요?',
-    ('체질량지수','시력','혈압','색각','AST','ALT','간염','Glucoss')
+    ('체질량지수','혈압','색각','AST','ALT','간염','Glucoss')
 )
 st.write('선택한 옵션:', option)
 
@@ -74,6 +74,15 @@ gshangmok = st.text_input("gshangmok")
 intro = st.text_input("intro")
 gsvalue1 = st.text_input("gsvalue1")
 gsvalue2 = st.text_input("gsvalue2")
+
+#데이터저장
+cursor.execute("INSERT INTO gsdata(gshangmok, intro) VALUES ('체질량지수','체질량지수(BMI : Body Mass Index)란 신장과 체중의 비율을 사용한 체중의 객관적인 지수를 말합니다'")
+cursor.execute("INSERT INTO gsdata(gshangmok, intro) VALUES ('색각','색각검사 안내'")
+cursor.execute("INSERT INTO gsdata(gshangmok, intro) VALUES ('혈압','성인의 정상적인 혈압 수치는 안정시 140/90mmHg로 유지되어야 합니다'")
+cursor.execute("INSERT INTO gsdata(gshangmok, intro) VALUES ('AST','간이 손상되면 혈액으로 빠져나와 혈중 농도가 올라가고 이 농도를 수치로 나타냅니다. 정상범위는 40 이하입니다'")
+cursor.execute("INSERT INTO gsdata(gshangmok, intro) VALUES ('ALT','간염을 발견하기에 가장 효과적인 검사 항목 중 하나입니다. 정상범위는 40 이하입니다'")
+cursor.execute("INSERT INTO gsdata(gshangmok, intro) VALUES ('간염','B형간염과 C형간염으로 나눠집니다. 정상범위는 음성입니다'")
+cursor.execute("INSERT INTO gsdata(gshangmok, intro) VALUES ('Glucoss','공복시 혈당수치입니다. 정상범위는 70~100 mg/dl입니다'")
 
 #데이터삽입 버튼
 if st.button("수치내용저장"):
