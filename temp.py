@@ -47,11 +47,6 @@ def main():
         st.text('')
 
 
-
-if __name__ == '__main__':
-    main()
-
-
 #from IPython.display import YouTubeVideo
 
 st.header('병역처분결과서의 결과를 확인하세요')
@@ -116,4 +111,5 @@ st.dataframe(df)
 
 #연결종료
 conn.close()
-
+if __name__ == '__main__':
+    main()
