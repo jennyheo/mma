@@ -33,7 +33,7 @@ st.subheader('this is subheader')
 
 
 import sqlite3
-st.title("Add User to SQLite Database")
+st.title("DB에 저장할 사용자를 입력하세요")
 
 #데이터베이스 연결
 conn = sqlite3.connect('example.db')
@@ -49,12 +49,12 @@ cursor.execute('''
 ''')
 
 #사용자입력폼
-st.subheader("ENter User Information")
-name = st.text_input("Name")
-age = st.number_input("Age", min_value=0, step=1)
+st.subheader("사용자 정보 입력")
+name = st.text_input("name")
+age = st.number_input("age", min_value=0, step=1)
 
 #데이터삽입 버튼
-if st.button("Add User"):
+if st.button("사용자 저장"):
     if name and age:
          cursor.execute("INSERT INTO users (name, age) VALUES (?, ?)", (name, int(age)))
          conn.commit()
@@ -71,3 +71,17 @@ st.dataframe(df)
 
 #연결종료
 conn.close()
+
+
+def main():
+    page_names_to_funcs = {
+        "Create Database": create_database,
+        "Upload Data": upload_data,
+        "Run Query": run_query,
+    }
+
+    selected_page = st.sidebar.selectbox("Select a page", page_names_to_funcs.keys())
+    page_names_to_funcs[selected_page]()
+
+if __name__ == '__main__':
+    main()
