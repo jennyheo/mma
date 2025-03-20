@@ -71,9 +71,9 @@ st.divider()
 
 st.subheader("사용자 정보 입력")
 gshangmok = st.text_input("gshangmok")
-intro = st.number_input("intro")
-gsvalue1 = st.number_input("gsvalue1")
-gsvalue2 = st.number_input("gsvalue2")
+intro = st.text_input("intro")
+gsvalue1 = st.text_input("gsvalue1")
+gsvalue2 = st.text_input("gsvalue2")
 
 #데이터삽입 버튼
 if st.button("수치내용저장"):
