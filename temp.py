@@ -51,7 +51,7 @@ with tab2:
      #st.markdown("#### 검사결과 중 어떤 항목이 궁금하신가요?")
      #st.divider()
 
-     user_emoji = st.selectbox('', ['', '체질량지수','혈압','색각','AST','ALT','간염','Gloucoss'], )
+     user_emoji = st.selectbox('', ['', '체질량지수','혈압','색각','AST','ALT','간염','Glucoss'], )
 
      if user_emoji != '':
           st.subheader(f'👈 {user_emoji} 안내입니다', divider=True)
