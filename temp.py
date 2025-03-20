@@ -8,7 +8,7 @@ import random
 from streamlit.runtime.scriptrunner import add_script_run_ctx, get_script_run_ctx
 import time
 from threading import Thread
-mport numpy as np
+import numpy as np
 
 def main():
     st.title('App4 - 아이리스 꽃의 종류')
