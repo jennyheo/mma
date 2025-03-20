@@ -43,7 +43,7 @@ st.divider()
 
 
 import sqlite3
-st.title("DB에 저장할 사용자를 입력하세요")
+st.title("DB에 저장")
 
 #데이터베이스 연결
 conn = sqlite3.connect('example.db')
