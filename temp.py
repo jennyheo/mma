@@ -98,11 +98,8 @@ if st.button("수치내용저장"):
 st.subheader("입력된 데이터 보여주기")
 cursor.execute("SELECT * FROM users")
 rows=cursor.fetchall()
-for row in rows:
-   print(row)
-   
-#df=pd.DataFrame(rows, columns=["id","gshangmok","intro"])
-#st.dataframe(df)
+df=pd.DataFrame(rows, columns=["id","Name","Age"])
+st.dataframe(df)
 
 #연결종료
 conn.close()
