@@ -17,10 +17,7 @@ with st.expander('😄 알려드립니다'):
 #user_food = st.sidebar.selectbox('가장 좋아하는 음식은?', ['', 'Tom Yum Kung', 'Burrito', 'Lasagna', 'Hamburger', 'Pizza'])
 
 
-st.header('입력')
 user_name = st.selectbox('병역처분 결과를 입력하세요', ['','현역입영대상','사회복무요원소집대상','전시근로역','병역면제','재검대상'])
-user_emoji = st.selectbox('검사결과 중 어떤 항목이 궁금하신가요?', ['', '체질량지수','혈압','색각','AST','ALT','간염','Gloucoss'])
-
 
 if user_name != '':
     st.subheader(f'{user_name} 안내입니다', divider=True)
@@ -40,10 +37,14 @@ elif user_name == '재검대상' :
 else: 
      st.write('')
 
+
+user_emoji = st.selectbox('검사결과 중 어떤 항목이 궁금하신가요?', ['', '체질량지수','혈압','색각','AST','ALT','간염','Gloucoss'])
+
 if user_emoji != '':
     st.subheader(f'{user_emoji} 안내입니다', divider=True)
 else:
     st.subheader('👈  궁금한 검사항목을 선택하세요', divider=True)
+
 
 if user_emoji == '체질량지수' :
      st.write('체질량지수(BMI : Body Mass Index)는 신장과 체중의 비율을 사용한 체중의 객관적인 지수를 말합니다.')
