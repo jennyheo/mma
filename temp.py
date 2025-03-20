@@ -10,18 +10,7 @@ import time
 from threading import Thread
 import numpy as np
 
-def main():
-    st.title('App4 - 아이리스 꽃의 종류')
-
-    df = pd.read_csv('./data/iris.csv')
-
-    #체크박스를 나타내는 방법
-
-    if st.checkbox('데이터프레임 보이기'):
-        st.dataframe(df)
-    else :
-        st.error('박스를 체크 해주십시오')
-    
+   
     #셀렉트박스 : 여러개 중에서 한개를 선택할 때
     language = ['Pyhton', 'Java','C','PHP','GO']
 
@@ -111,5 +100,4 @@ st.dataframe(df)
 
 #연결종료
 conn.close()
-if __name__ == '__main__':
-    main()
+
