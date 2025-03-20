@@ -95,11 +95,11 @@ if st.button("수치내용저장"):
         st.error("검사항목과 참고치설명은 필수입니다")
 
 #데이터조회 및 출력
-st.subheader("User Data from SQLite Database")
+st.subheader("입력된 데이터 보여주기")
 cursor.execute("SELECT * FROM gsdatav")
 rows=cursor.fetchall()
-df=pd.DataFrame(rows, columns=["id","gshangmok","intro"])
-st.dataframe(df)
+#df=pd.DataFrame(rows, columns=["id","gshangmok","intro"])
+#st.dataframe(df)
 
 #연결종료
 conn.close()
