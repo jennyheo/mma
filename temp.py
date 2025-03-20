@@ -96,7 +96,7 @@ if st.button("수치내용저장"):
 
 #데이터조회 및 출력
 st.subheader("입력된 데이터 보여주기")
-cursor.execute("SELECT * FROM gsdatav")
+cursor.execute("SELECT * FROM users")
 rows=cursor.fetchall()
 for row in rows:
    print(row)
