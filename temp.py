@@ -3,6 +3,7 @@
 import streamlit as st
 import pandas as pd
 
+
 st.set_page_config(layout="wide")
 
 st.header('병역처분결과에 대해 알려드립니다')
@@ -11,18 +12,21 @@ with st.expander('😄 알려드립니다'):
   st.write('병역판정검사(입영판정검사) 결과지 내용에 대해 궁금한 사항을 안내합니다.')
   #st.image('https://streamlit.io/images/brand/streamlit-logo-secondary-colormark-darktext.png', width=250)
 
+#사이드바 옵션
 #st.sidebar.header('입력')
 #user_name = st.sidebar.selectbox('병역처분 결과를 입력하세요', ['','현역입영대상','사회복무요원소집대상','전시근로역','병역면제','재검대상'])
 #user_emoji = st.sidebar.selectbox('검사결과 중 어떤 항목이 궁금하신가요?', ['', '체질량지수','혈압','색각','AST','ALT','간염','Gloucoss'])
 #user_food = st.sidebar.selectbox('가장 좋아하는 음식은?', ['', 'Tom Yum Kung', 'Burrito', 'Lasagna', 'Hamburger', 'Pizza'])
 
 
-user_name = st.selectbox('병역처분 결과를 입력하세요', ['','현역입영대상','사회복무요원소집대상','전시근로역','병역면제','재검대상'])
+st.subheader('병역처분결과를 입력하세요', divider=True)
+
+user_name = st.selectbox('', ['','현역입영대상','사회복무요원소집대상','전시근로역','병역면제','재검대상'])
 
 if user_name != '':
-    st.subheader(f'{user_name} 안내입니다', divider=True)
+    st.subheader(f'👈 {user_name} 안내입니다', divider=True)
 else:
-    st.subheader('👈  병역판정검사 처분결과를 선택하세요', divider=True)
+    st.subheader('')
 
 if user_name == '현역입영대상' :
      st.write('1-3급은 현역입영대상입니다')
@@ -37,13 +41,14 @@ elif user_name == '재검대상' :
 else: 
      st.write('')
 
+st.subheader('검사결과 중 어떤 항목이 궁금하신가요?', divider=True)
 
-user_emoji = st.selectbox('검사결과 중 어떤 항목이 궁금하신가요?', ['', '체질량지수','혈압','색각','AST','ALT','간염','Gloucoss'])
+user_emoji = st.selectbox('', ['', '체질량지수','혈압','색각','AST','ALT','간염','Gloucoss'], )
 
 if user_emoji != '':
-    st.subheader(f'{user_emoji} 안내입니다', divider=True)
+    st.subheader(f'👈 {user_emoji} 안내입니다', divider=True)
 else:
-    st.subheader('👈  궁금한 검사항목을 선택하세요', divider=True)
+    st.subheader('')
 
 
 if user_emoji == '체질량지수' :
