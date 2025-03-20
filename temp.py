@@ -78,7 +78,7 @@ gsvalue2 = st.text_input("gsvalue2")
 #데이터삽입 버튼
 if st.button("수치내용저장"):
     if gshangmok and intro:
-         cursor.execute("INSERT INTO gsdata(gshangmok, intro, gsvalue1, gsvalue2) VALUES (?, ?);", (gshangmok, intro))
+         cursor.execute("INSERT INTO gsdata(gshangmok, intro) VALUES (?, ?);", (gshangmok, intro))
          conn.commit()
          st.success("Added successfully!")
     else :
