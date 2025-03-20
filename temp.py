@@ -67,12 +67,35 @@ with tab2:
           st.write('성인의 정상적인 혈압 수치는 안정시 140/90mmHg로 유지되어야 합니다')
      elif user_emoji == 'AST' :
           st.write('간이 손상되면 혈액으로 빠져나와 혈중 농도가 올라가고 이 농도를 수치로 나타냅니다. 정상범위는 40 이하입니다')
+          #v1 = st.number_input(f'❓ 결과지의 수치를 입력하세요', min_value = 0)
+          v1 = st.slider("❓ 검사결과지의 수치를 입력하세요", 0, 80, 40)
+
+          if v1 == 0:
+               st.write('') 
+          elif v1 <= 40:
+               st.write(f"AST수치 {v1} : 정상입니다") 
+          elif v1 > 40:
+               st.write(f"AST수치 {v1} : 이상입니다") 
      elif user_emoji == 'ALT' :
-          st.write('간염을 발견하기에 가장 효과적인 검사 항목 중 하나입니다. 정상범위는 40 이하입니다')
+          st.write('간염을 발견하기에 가장 효과적인 검사 항목 중 하나입니다. 정상범위는 41 이하입니다')
+          v2 = st.slider("❓ 검사결과지의 수치를 입력하세요", 0, 80, 41)
+          if v2 == 0:
+               st.write('') 
+          elif v2 <= 41:
+               st.write(f"ALT수치 {v2} : 정상입니다") 
+          elif v2 > 41:
+               st.write(f"ALT수치 {v2} : 이상입니다") 
      elif user_emoji == '간염' :
           st.write('B형간염과 C형간염으로 나눠집니다. 정상범위는 음성입니다')
      elif user_emoji == 'Glucoss' :
           st.write('공복시 혈당수치입니다. 정상범위는 70~100 mg/dl입니다')
+          v3 = st.slider("❓ 검사결과지의 수치를 입력하세요", 50, 300, 100)
+          if v3 == 0:
+               st.write('') 
+          elif v3 <= 100 and v3 >= 70:
+               st.write(f"ALT수치 {v3} : 정상입니다") 
+          else:
+               st.write(f"ALT수치 {v3} : 이상입니다") 
      else: 
           st.write('')
 
