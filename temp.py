@@ -61,7 +61,7 @@ cursor.execute('''
         v2 TEXT NOT NULL, #여분필드2
         v3 TEXT NOT NULL, #여분필드3
         v4 TEXT NOT NULL, #여분필드4
-        v5 TEXT NOT NULL, #여분필드5
+        v5 TEXT NOT NULL #여분필드5
       )
 ''')
 
