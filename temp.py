@@ -65,26 +65,30 @@ cursor.execute('''
       )
 ''')
 
+st.divider()
+
 #사용자입력폼
 
 st.subheader("사용자 정보 입력")
-name = st.text_input("name")
-age = st.number_input("age", min_value=0, step=1)
+gshangmok = st.text_input("gshangmok")
+intro = st.number_input("intro")
+gsvalue1 = st.number_input("gsvalue1")
+gsvalue2 = st.number_input("gsvalue2")
 
 #데이터삽입 버튼
-if st.button("사용자 저장"):
-    if name and age:
-         cursor.execute("INSERT INTO users (name, age) VALUES (?, ?)", (name, int(age)))
+if st.button("수치내용저장"):
+    if gshangmok and intro:
+         cursor.execute("INSERT INTO users (gshangmok, intro, gsvalue1, gsvalue2) VALUES (?, ?, ?, ?)", (gshangmok, intro, gsvalue1, gsvalue2))
          conn.commit()
-         st.success("User '{name}' added successfully!")
+         st.success("Added successfully!")
     else :
-        st.error("please enter both name and age.")
+        st.error("검사항목과 참고치설명은 필수입니다")
 
 #데이터조회 및 출력
 st.subheader("User Data from SQLite Database")
-cursor.execute("SELECT * FROM users")
+cursor.execute("SELECT * FROM gsdata")
 rows=cursor.fetchall()
-df=pd.DataFrame(rows, columns=["ID","Name","Age"])
+df=pd.DataFrame(rows, columns=["id","gshangmok","intro","gsvalue1","gsvalue2"])
 st.dataframe(df)
 
 #연결종료
