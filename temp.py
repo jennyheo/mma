@@ -8,6 +8,49 @@ import random
 from streamlit.runtime.scriptrunner import add_script_run_ctx, get_script_run_ctx
 import time
 from threading import Thread
+mport numpy as np
+
+def main():
+    st.title('App4 - 아이리스 꽃의 종류')
+
+    df = pd.read_csv('./data/iris.csv')
+
+    #체크박스를 나타내는 방법
+
+    if st.checkbox('데이터프레임 보이기'):
+        st.dataframe(df)
+    else :
+        st.error('박스를 체크 해주십시오')
+    
+    #셀렉트박스 : 여러개 중에서 한개를 선택할 때
+    language = ['Pyhton', 'Java','C','PHP','GO']
+
+    my_choice = st.selectbox('좋아하는 언어를 선택하시오', language)
+
+    st.text( '저는 {}언어를 좋아합니다.'.format(my_choice) )
+
+    if my_choice == language[0] or my_choice == language[3] or  my_choice == language[4]:
+        st.text('배우기 쉽습니다')
+
+    elif my_choice == language[1] or my_choice == language[-3]:
+        st.text('배우기 어렵습니다')
+
+    #멀티셀렉트 : 여러개를 동시에 선택 가능
+    
+    selected_list = st.multiselect('여러개 선택 가능',df.columns)
+
+    print(selected_list)
+
+    if len(selected_list) != 0:
+        st.dataframe(df[selected_list])
+    else :
+        st.text('')
+
+
+
+if __name__ == '__main__':
+    main()
+
 
 #from IPython.display import YouTubeVideo
 
@@ -23,10 +66,11 @@ if st.button('병역면제'):
      st.write('6급은 병역이 면제됩니다')
 if st.button('재검대상'):
      st.write('7급 치유기간 이후에 다시 검사받으세요')
+     
 st.divider()
-st.title('this is title')
-st.header('this is header')
-st.subheader('this is subheader')
+#st.title('this is title')
+#st.header('this is header')
+#st.subheader('this is subheader')
 
 #video_SD = YouTubeVideo("jWQx2f-CErU?si=qycwg5gnqN0caB0_", width=500) # https://youtu.be/POe9SOEKotk
 #display(video_SD)
@@ -49,6 +93,7 @@ cursor.execute('''
 ''')
 
 #사용자입력폼
+
 st.subheader("사용자 정보 입력")
 name = st.text_input("name")
 age = st.number_input("age", min_value=0, step=1)
