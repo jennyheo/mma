@@ -55,13 +55,13 @@ cursor.execute('''
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         gshangmok TEXT NOT NULL,
         intro TEXT NOT NULL, 
-        gsvalue1 TEXT NOT NULL,
-        gsvalue2 TEXT NOT NULL,
-        v1 TEXT NOT NULL,
-        v2 TEXT NOT NULL,
-        v3 TEXT NOT NULL,
-        v4 TEXT NOT NULL,
-        v5 TEXT NOT NULL 
+        gsvalue1 TEXT,
+        gsvalue2 TEXT,
+        v1 TEXT,
+        v2 TEXT,
+        v3 TEXT,
+        v4 TEXT,
+        v5 TEXT
       )
 ''')
 
