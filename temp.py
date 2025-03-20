@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
-"""
-Spyder Editor
-
-This is a temporary script file.
-"""
 
 import streamlit as st
 import pandas as pd
 import numpy as np
 import math
 import random
+from streamlit.runtime.scriptrunner import add_script_run_ctx, get_script_run_ctx
+import time
+from threading import Thread
 
 #from IPython.display import YouTubeVideo
 
@@ -25,8 +23,51 @@ if st.button('병역면제'):
      st.write('6급은 병역이 면제됩니다')
 if st.button('재검대상'):
      st.write('7급 치유기간 이후에 다시 검사받으세요')
-     
-     
-     
+st.divider()
+st.title('this is title')
+st.header('this is header')
+st.subheader('this is subheader')
+
 #video_SD = YouTubeVideo("jWQx2f-CErU?si=qycwg5gnqN0caB0_", width=500) # https://youtu.be/POe9SOEKotk
 #display(video_SD)
+
+
+import sqlite3
+st.title("Add User to SQLite Database")
+
+#데이터베이스 연결
+conn = sqlite3.connect('example.db')
+cursor = conn.cursor()
+
+#테이블생성(이미존재하면 생략)
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        age INTEGER NOT NULL
+              )
+''')
+
+#사용자입력폼
+st.subheader("ENter User Information")
+name = st.text_input("Name")
+age = st.number_input("Age", min_value=0, step=1)
+
+#데이터삽입 버튼
+if st.button("Add User"):
+    if name and age:
+         cursor.execute("INSERT INTO users (name, age) VALUES (?, ?)", (name, int(age)))
+         conn.commit()
+         st.success("User '{name}' added successfully!")
+    else :
+        st.error("please enter both name and age.")
+
+#데이터조회 및 출력
+st.subheader("User Data from SQLite Database")
+cursor.execute("SELECT * FROM users")
+rows=cursor.fetchall()
+df=pd.DataFrame(rows, columns=["ID","Name","Age"])
+st.dataframe(df)
+
+#연결종료
+conn.close()
