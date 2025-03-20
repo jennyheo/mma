@@ -51,11 +51,18 @@ cursor = conn.cursor()
 
 #테이블생성(이미존재하면 생략)
 cursor.execute('''
-    CREATE TABLE IF NOT EXISTS users (
+    CREATE TABLE IF NOT EXISTS gsdata (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
-        age INTEGER NOT NULL
-              )
+        gshangmok TEXT NOT NULL,
+        intro TEXT NOT NULL, #참고치설명
+        gsvalue1 TEXT NOT NULL, #검사수치시작
+        gsvalue2 TEXT NOT NULL, #검사수치끝
+        v1 TEXT NOT NULL, #여분필드1
+        v2 TEXT NOT NULL, #여분필드2
+        v3 TEXT NOT NULL, #여분필드3
+        v4 TEXT NOT NULL, #여분필드4
+        v5 TEXT NOT NULL, #여분필드5
+      )
 ''')
 
 #사용자입력폼
