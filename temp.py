@@ -98,25 +98,6 @@ with tab2:
                st.write(f"Glucoss수치 {v3} : 이상입니다") 
      else: 
           st.write('')
-col1, col2, col3, col4, col5, col6, col7 = st.columns([2,1,1,1,1,1,1])
-
-with col1:
-    input_value=st.button('체질량지수')
-with col2:
-    input_value=st.button('혈압')
-with col3:
-    input_value=st.button('색각')
-with col4:
-    input_value=st.button('AST')
-with col5:
-    input_value=st.button('ALT')
-with col6:
-#     if st.button('간염') :
-#          con.write(f"Hello~ hwo")
-     # btn_clicked = st.button("간염", key='confirm_btn')
-    input_value=st.button('간염')
-with col7:
-    input_value=st.button('Glucoss')
 
 
 
