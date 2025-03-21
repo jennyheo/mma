@@ -10,7 +10,7 @@ st.header('병역처분결과에 대해 알려드립니다')
 
 with st.expander('😄 알려드립니다'):
   st.write('병역판정검사(입영판정검사) 결과지 내용에 대해 궁금한 사항을 안내합니다.')
-  #st.image('https://streamlit.io/images/brand/streamlit-logo-secondary-colormark-darktext.png', width=250)
+  st.image('https://mma.go.kr/download/visual/CAIS_HPIS_202412020402149250.jpg', width=250)
 
 #사이드바 옵션
 #st.sidebar.header('입력')
@@ -68,7 +68,7 @@ with tab2:
      elif user_emoji == 'AST' :
           st.write('간이 손상되면 혈액으로 빠져나와 혈중 농도가 올라가고 이 농도를 수치로 나타냅니다. 정상범위는 40 이하입니다')
           #v1 = st.number_input(f'❓ 결과지의 수치를 입력하세요', min_value = 0)
-          v1 = st.slider("❓ 검사결과지의 수치를 입력하세요", 0, 80, 40)
+          v1 = st.slider("❓ 검사결과지의 AST수치를 입력하세요", 0, 80, 40)
 
           if v1 == 0:
                st.write('') 
@@ -78,7 +78,7 @@ with tab2:
                st.write(f"AST수치 {v1} : 이상입니다") 
      elif user_emoji == 'ALT' :
           st.write('간염을 발견하기에 가장 효과적인 검사 항목 중 하나입니다. 정상범위는 41 이하입니다')
-          v2 = st.slider("❓ 검사결과지의 수치를 입력하세요", 0, 80, 41)
+          v2 = st.slider("❓ 검사결과지의 ALT수치를 입력하세요", 0, 80, 41)
           if v2 == 0:
                st.write('') 
           elif v2 <= 41:
@@ -89,17 +89,66 @@ with tab2:
           st.write('B형간염과 C형간염으로 나눠집니다. 정상범위는 음성입니다')
      elif user_emoji == 'Glucoss' :
           st.write('공복시 혈당수치입니다. 정상범위는 70~100 mg/dl입니다')
-          v3 = st.slider("❓ 검사결과지의 수치를 입력하세요", 50, 300, 100)
+          v3 = st.slider("❓ 검사결과지의 Glucoss수치를 입력하세요", 50, 300, 100)
           if v3 == 0:
                st.write('') 
           elif v3 <= 100 and v3 >= 70:
-               st.write(f"ALT수치 {v3} : 정상입니다") 
+               st.write(f"Glucoss수치 {v3} : 정상입니다") 
           else:
-               st.write(f"ALT수치 {v3} : 이상입니다") 
+               st.write(f"Glucoss수치 {v3} : 이상입니다") 
      else: 
           st.write('')
+col1, col2, col3, col4, col5, col6, col7 = st.columns([2,1,1,1,1,1,1])
+
+with col1:
+    input_value=st.button('체질량지수')
+with col2:
+    input_value=st.button('혈압')
+with col3:
+    input_value=st.button('색각')
+with col4:
+    input_value=st.button('AST')
+with col5:
+    input_value=st.button('ALT')
+with col6:
+#     if st.button('간염') :
+#          con.write(f"Hello~ hwo")
+     # btn_clicked = st.button("간염", key='confirm_btn')
+    input_value=st.button('간염')
+with col7:
+    input_value=st.button('Glucoss')
 
 
+
+
+
+# def say(msg):
+#      st.write(msg)
+
+
+# btn_clicked = st.button("Confirm", key='confirm_btn')
+
+
+# if btn_clicked:
+#     con = st.container()
+#     if not str(input_value):
+#         con.error("Input your name please~")
+#     else:
+#         con.write(f"Hello~ ")
+
+# st.title("Streamlit Test")
+# input_user_name = st.text_input(label="User Name", value="")
+
+# checkbox = st.checkbox('agree')
+# btn_clicked = st.button("Confirm", key='confirm_btn', disabled=(checkbox is False))
+
+# if btn_clicked:
+#     con = st.container()
+#     con.caption("Result")
+#     if not str(input_user_name):
+#         con.error("Input your name please~")
+#     else:
+#         con.write(f"Hello~ {str(input_user_name)}")
 
 #st.header("Two", divider=True)
 #col1, col2, col3 = st.columns(3)
