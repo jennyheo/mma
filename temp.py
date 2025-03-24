@@ -150,11 +150,6 @@ with tab2:
      if "Glucoss"==st.session_state.kkk:
           st.subheader(f'👉 ' + st.session_state['kkk'] + '안내입니다', divider=True)
           st.write('공복시 혈당수치입니다. 정상범위는 70~100 mg/dl입니다')
-          v = st.slider("❓ 검사결과지의 Glucoss수치를 입력하세요", 0, 200, 100)
-          if v <= 100 and v >= 70:
-               st.write(f"Glucoss수치 {v} : 🟢 정상입니다") 
-          else:
-               st.write(f"Glucoss수치 {v} : 🔴 이상입니다") 
 
 
      if st.button('HbA1c', use_container_width=True):
@@ -170,11 +165,7 @@ with tab2:
      if "WBC"==st.session_state.kkk:
           st.subheader(f'👉 ' + st.session_state['kkk'] + '안내입니다', divider=True)
           st.write('WBC(백혈구 수)가 정상 범위인지 확인합니다. 정상범위는 4.0~10.0 X 10³/μL입니다')
-          v = st.slider("❓ 검사결과지의 WBC수치를 입력하세요", 0, 20, 10)
-          if v >= 4 and v <= 10:
-               st.write(f"WBC수치 {v} : 🟢 정상입니다") 
-          else:
-               st.write(f"WBC수치 {v} : 🔴 이상입니다")
+
 
      if st.button('RBC', use_container_width=True):
           st.session_state['kkk'] = 'RBC'
@@ -182,11 +173,7 @@ with tab2:
      if "RBC"==st.session_state.kkk:
           st.subheader(f'👉 ' + st.session_state['kkk'] + '안내입니다', divider=True)
           st.write('RBC(적혈구 수)가 정상 범위인지 확인합니다. 정상범위는 4.2~6.3 X 10³/μL입니다')
-          v = st.slider("❓ 검사결과지의 RBC수치를 입력하세요", 0.0, 20.0, 6.3)
-          if v <= 4.2 and v >= 6.3:
-               st.write(f"RBC수치 {v} : 🟢 정상입니다") 
-          else:
-               st.write(f"RBC수치 {v} : 🔴 이상입니다")
+
 
      if st.button('HB', use_container_width=True):
           st.session_state['kkk'] = 'HB'
@@ -194,11 +181,6 @@ with tab2:
      if "HB"==st.session_state.kkk:
           st.subheader(f'👉 ' + st.session_state['kkk'] + '안내입니다', divider=True)
           st.write('Hb(Hemoglobin)은 혈액 속의 적혈구에 있는 단백질로, 혈색소라고도 합니다. 혈색소는 몸 전체에 산소를 운반하는 역할을 합니다. 혈색소 감소는 빈혈, 백혈병 등을 의심할 수 있습니다. 정상범위는 13.7~17.5g/㎗입니다')
-          v = st.slider("❓ 검사결과지의 HB수치를 입력하세요", 0.0, 35.0, 17.5)
-          if v <= 13.7 and v >= 17.5:
-               st.write(f"HB수치 {v} : 🟢 정상입니다") 
-          else:
-               st.write(f"HB수치 {v} : 🔴 이상입니다")
 
 
      if st.session_state.kkk == False:
