@@ -3,6 +3,7 @@
 import streamlit as st
 import pandas as pd
 import pyarrow as pa
+from streamlit.server.server import Server
 
 st.set_page_config(layout="wide")
 #.streamlit/config.toml 파일에서 maincolor 지정 : 파란색
@@ -80,74 +81,27 @@ with tab1:
 with tab2:
      st.subheader('검사결과 중 어떤 항목이 궁금하신가요?', divider=True)
 
-     col1, col2, col3 = st.columns([2,1,1])
-     col4, col5, col6, col7, col8 = st.columns([1,1,1,1,1])
-     col9, col10, col11 = st.columns([1,1,1])
-
      if 'kkk' not in st.session_state:
           st.session_state['kkk'] = '체질량지수'
-     
-     with st.container():
-          with col1:
-               but1=st.button('체질량지수', use_container_width=True)
-               if but1:
-                    st.session_state['kkk'] = '체질량지수'
-          with col2:
-               but2=st.button('혈압', use_container_width=True)
-               if but2:
-                    st.session_state['kkk'] = '혈압'
-          with col3:
-               but3=st.button('색각', use_container_width=True)
-               if but3:
-                    st.session_state['kkk'] = '색각'
-     with st.container():
-          with col4:
-               but4=st.button('AST', use_container_width=True)
-               if but4:
-                    st.session_state['kkk'] = 'AST'
-          with col5:
-               but5=st.button('ALT', use_container_width=True)
-               if but5:
-                    st.session_state['kkk'] = 'ALT'
-          with col6:
-               but6=st.button('간염', use_container_width=True)
-               if but6:
-                    st.session_state['kkk'] = '간염'
-          with col7:
-               but7=st.button('Glucoss', use_container_width=True)
-               if but7:
-                    st.session_state['kkk'] = 'Glucoss'
-          with col8:
-               but8=st.button('HbA1c', use_container_width=True)
-               if but8:
-                    st.session_state['kkk'] = 'HbA1c'
 
-     with st.container():
-          with col9:
-               but9=st.button('WBC', use_container_width=True)
-               if but9:
-                    st.session_state['kkk'] = 'WBC'
-          with col10:
-               but10=st.button('RBC', use_container_width=True)
-               if but10:
-                    st.session_state['kkk'] = 'RBC'
-          with col11:
-               but11=st.button('HB', use_container_width=True)
-               if but11:
-                    st.session_state['kkk'] = 'HB'
-
-
-     if st.session_state.kkk:
-          st.subheader(f'👉 ' + st.session_state['kkk'] + '안내입니다', divider=True)
-     else:
-          st.session_state.kkk=''
-
+     if st.button('체질량지수', use_container_width=True):
+          st.session_state['kkk'] = '체질량지수'
      if '체질량지수'==st.session_state.kkk: 
           st.write('체질량지수(BMI : Body Mass Index)는 신장과 체중의 비율을 사용한 체중의 객관적인 지수를 말합니다.')
+
+     if st.button('혈압', use_container_width=True):
+          st.session_state['kkk'] = '혈압')
      if "혈압"==st.session_state.kkk: 
           st.write('성인의 정상적인 혈압 수치는 안정시 140/90mmHg로 유지되어야 합니다')
+
+     if st.button('색각', use_container_width=True):
+          st.session_state['kkk'] = '색각'
      if "색각"==st.session_state.kkk: 
           st.write('색각검사 안내')
+
+
+     if st.button('AST', use_container_width=True):
+          st.session_state['kkk'] = 'AST'
      if "AST"==st.session_state.kkk: 
           st.write('간이 손상되면 혈액으로 빠져나와 혈중 농도가 올라가고 이 농도를 수치로 나타냅니다. 정상범위는 40 이하입니다')
           v = st.slider("❓ 검사결과지의 AST수치를 입력하세요", 0, 80, 40)
@@ -157,6 +111,9 @@ with tab2:
                st.write(f"AST수치 {v} : 🟢 정상입니다") 
           elif v > 40:
                st.write(f"AST수치 {v} : 🔴 이상입니다") 
+
+     if st.button('ALT', use_container_width=True):
+          st.session_state['kkk'] = 'ALT'
      if "ALT"==st.session_state.kkk: 
           st.write('간염을 발견하기에 가장 효과적인 검사 항목 중 하나입니다. 정상범위는 41 이하입니다')
           v = st.slider("❓ 검사결과지의 ALT수치를 입력하세요", 0, 80, 41)
@@ -166,8 +123,14 @@ with tab2:
                st.write(f"ALT수치 {v} : 🟢 정상입니다") 
           elif v > 41:
                st.write(f"ALT수치 {v} : 🔴 이상입니다") 
+
+     if st.button('간염', use_container_width=True):
+          st.session_state['kkk'] = '간염'
      if "간염"==st.session_state.kkk:
           st.write('B형간염과 C형간염으로 나눠집니다. 정상범위는 음성입니다')
+
+     if st.button('Glucoss', use_container_width=True):
+          st.session_state['kkk'] = 'Glucoss'
      if "Glucoss"==st.session_state.kkk:
           st.write('공복시 혈당수치입니다. 정상범위는 70~100 mg/dl입니다')
           v = st.slider("❓ 검사결과지의 Glucoss수치를 입력하세요", 0, 200, 100)
@@ -177,6 +140,36 @@ with tab2:
                st.write(f"Glucoss수치 {v} : 🟢 정상입니다") 
           else:
                st.write(f"Glucoss수치 {v} : 🔴 이상입니다") 
+
+     if st.button('HbA1c', use_container_width=True):
+          st.session_state['kkk'] = 'HbA1c'
+
+
+     if st.button('WBC', use_container_width=True):
+          st.session_state['kkk'] = 'WBC'
+
+
+     if "WBC"==st.session_state.kkk:
+          st.write('WBC(백혈구 수)가 정상 범위인지 확인합니다. 정상범위는 4,000~9,000개/μL입니다')
+          v = st.slider("❓ 검사결과지의 WBC수치를 입력하세요", 0, 200, 100)
+          if v == 0:
+               st.write('') 
+          elif v <= 100 and v >= 70:
+               st.write(f"WBC수치 {v} : 🟢 정상입니다") 
+          else:
+               st.write(f"WBC수치 {v} : 🔴 이상입니다") 
+
+     if st.button('RBC', use_container_width=True):
+          st.session_state['kkk'] = 'RBC'
+
+
+     if st.button('HB', use_container_width=True):
+          st.session_state['kkk'] = 'HB'
+
+     if st.session_state.kkk:
+          st.subheader(f'👉 ' + st.session_state['kkk'] + '안내입니다', divider=True)
+     else:
+          st.session_state.kkk=''
 
 
 with tab3:
