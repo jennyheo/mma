@@ -2,11 +2,12 @@
 
 import streamlit as st
 import pandas as pd
-
+import pyarrow as pa
 
 st.set_page_config(layout="wide")
+#.streamlit/config.toml 파일에서 maincolor 지정 : 파란색
 
-st.header('병역처분결과에 대해 알려드립니다')
+st.subheader('병역처분결과에 대해 알려드립니다')
 
 with st.expander('😄 알려드립니다'):
   st.write('병역판정검사(입영판정검사) 결과지 내용에 대해 궁금한 사항을 안내합니다.')
@@ -46,7 +47,7 @@ css = '''
 </style>
 '''
 
-tab1, tab2 = st.tabs(['병역처분','검사참고치']) #탭메뉴 가로형
+tab1, tab2, tab3 = st.tabs(['병역처분','검사참고치','바로가기']) #탭메뉴 가로형
 
 st.markdown(css, unsafe_allow_html=True)
 
@@ -65,7 +66,6 @@ with tab1:
 
      if user_name == '현역입영대상' :
           st.write('1-3급은 현역입영대상입니다')
-
      elif user_name == '사회복무요원소집대상' :
           st.write('4급은 사회복무요원 소집 대상입니다')
      elif user_name == '전시근로역' :
@@ -79,111 +79,112 @@ with tab1:
 
 with tab2:
      st.subheader('검사결과 중 어떤 항목이 궁금하신가요?', divider=True)
-     #st.markdown("#### 검사결과 중 어떤 항목이 궁금하신가요?")
-     #st.divider()
 
-     user_emoji = st.selectbox('', ['', '체질량지수','혈압','색각','AST','ALT','간염','Glucoss'], )
+     col1, col2, col3 = st.columns([2,1,1])
+     col4, col5, col6, col7, col8 = st.columns([1,1,1,1,1])
+     col9, col10, col11 = st.columns([1,1,1])
 
-     if user_emoji != '':
-          st.subheader(f'👉 {user_emoji} 안내입니다', divider=True)
+     if 'kkk' not in st.session_state:
+          st.session_state['kkk'] = '체질량지수'
+     
+     with st.container():
+          with col1:
+               but1=st.button('체질량지수', use_container_width=True)
+               if but1:
+                    st.session_state['kkk'] = '체질량지수'
+          with col2:
+               but2=st.button('혈압', use_container_width=True)
+               if but2:
+                    st.session_state['kkk'] = '혈압'
+          with col3:
+               but3=st.button('색각', use_container_width=True)
+               if but3:
+                    st.session_state['kkk'] = '색각'
+     with st.container():
+          with col4:
+               but4=st.button('AST', use_container_width=True)
+               if but4:
+                    st.session_state['kkk'] = 'AST'
+          with col5:
+               but5=st.button('ALT', use_container_width=True)
+               if but5:
+                    st.session_state['kkk'] = 'ALT'
+          with col6:
+               but6=st.button('간염', use_container_width=True)
+               if but6:
+                    st.session_state['kkk'] = '간염'
+          with col7:
+               but7=st.button('Glucoss', use_container_width=True)
+               if but7:
+                    st.session_state['kkk'] = 'Glucoss'
+          with col8:
+               but8=st.button('HbA1c', use_container_width=True)
+               if but8:
+                    st.session_state['kkk'] = 'HbA1c'
+
+     with st.container():
+          with col9:
+               but9=st.button('WBC', use_container_width=True)
+               if but9:
+                    st.session_state['kkk'] = 'WBC'
+          with col10:
+               but10=st.button('RBC', use_container_width=True)
+               if but10:
+                    st.session_state['kkk'] = 'RBC'
+          with col11:
+               but11=st.button('HB', use_container_width=True)
+               if but11:
+                    st.session_state['kkk'] = 'HB'
+
+
+     if st.session_state.kkk:
+          st.subheader(f'👉 ' + st.session_state['kkk'] + '안내입니다', divider=True)
      else:
-          st.subheader('')
+          st.session_state.kkk=''
 
-
-     if user_emoji == '체질량지수' :
+     if '체질량지수'==st.session_state.kkk: 
           st.write('체질량지수(BMI : Body Mass Index)는 신장과 체중의 비율을 사용한 체중의 객관적인 지수를 말합니다.')
-     elif user_emoji == '색각' :
-          st.write('색각검사 안내')
-     elif user_emoji == '혈압' :
+     if "혈압"==st.session_state.kkk: 
           st.write('성인의 정상적인 혈압 수치는 안정시 140/90mmHg로 유지되어야 합니다')
-     elif user_emoji == 'AST' :
+     if "색각"==st.session_state.kkk: 
+          st.write('색각검사 안내')
+     if "AST"==st.session_state.kkk: 
           st.write('간이 손상되면 혈액으로 빠져나와 혈중 농도가 올라가고 이 농도를 수치로 나타냅니다. 정상범위는 40 이하입니다')
-          #v1 = st.number_input(f'❓ 결과지의 수치를 입력하세요', min_value = 0)
-          v1 = st.slider("❓ 검사결과지의 AST수치를 입력하세요", 0, 80, 40)
-
-          if v1 == 0:
+          v = st.slider("❓ 검사결과지의 AST수치를 입력하세요", 0, 80, 40)
+          if v == 0:
                st.write('') 
-          elif v1 <= 40:
-               st.write(f"AST수치 {v1} : 🟢 정상입니다") 
-          elif v1 > 40:
-               st.write(f"AST수치 {v1} : 🔴 이상입니다") 
-     elif user_emoji == 'ALT' :
+          elif v <= 40:
+               st.write(f"AST수치 {v} : 🟢 정상입니다") 
+          elif v > 40:
+               st.write(f"AST수치 {v} : 🔴 이상입니다") 
+     if "ALT"==st.session_state.kkk: 
           st.write('간염을 발견하기에 가장 효과적인 검사 항목 중 하나입니다. 정상범위는 41 이하입니다')
-          v2 = st.slider("❓ 검사결과지의 ALT수치를 입력하세요", 0, 80, 41)
-          if v2 == 0:
+          v = st.slider("❓ 검사결과지의 ALT수치를 입력하세요", 0, 80, 41)
+          if v == 0:
                st.write('') 
-          elif v2 <= 41:
-               st.write(f"ALT수치 {v2} : 🟢 정상입니다") 
-          elif v2 > 41:
-               st.write(f"ALT수치 {v2} : 🔴 이상입니다") 
-     elif user_emoji == '간염' :
+          elif v <= 41:
+               st.write(f"ALT수치 {v} : 🟢 정상입니다") 
+          elif v > 41:
+               st.write(f"ALT수치 {v} : 🔴 이상입니다") 
+     if "간염"==st.session_state.kkk:
           st.write('B형간염과 C형간염으로 나눠집니다. 정상범위는 음성입니다')
-     elif user_emoji == 'Glucoss' :
+     if "Glucoss"==st.session_state.kkk:
           st.write('공복시 혈당수치입니다. 정상범위는 70~100 mg/dl입니다')
-          v3 = st.slider("❓ 검사결과지의 Glucoss수치를 입력하세요", 50, 200, (70, 100))
-          if v3 == 0:
+          v = st.slider("❓ 검사결과지의 Glucoss수치를 입력하세요", 0, 200, 100)
+          if v == 0:
                st.write('') 
-          elif v3 <= 100 and v3 >= 70:
-               st.write(f"Glucoss수치 {v3} : 🟢 정상입니다") 
+          elif v <= 100 and v >= 70:
+               st.write(f"Glucoss수치 {v} : 🟢 정상입니다") 
           else:
-               st.write(f"Glucoss수치 {v3} : 🔴 이상입니다") 
-     else: 
-          st.write('')
-col1, col2, col3, col4, col5, col6, col7 = st.columns([2,1,1,1,1,1,1])
+               st.write(f"Glucoss수치 {v} : 🔴 이상입니다") 
 
 
-
-
-st.link_button("건강검진 결과서 바로가기(인증이 필요합니다)", "https://mwpt.mma.go.kr/caisBMHS/index_mwps.jsp?menuNo=22255")
-
-
-# def say(msg):
-#      st.write(msg)
-
-
-# btn_clicked = st.button("Confirm", key='confirm_btn')
-
-
-# if btn_clicked:
-#     con = st.container()
-#     if not str(input_value):
-#         con.error("Input your name please~")
-#     else:
-#         con.write(f"Hello~ ")
-
-# st.title("Streamlit Test")
-# input_user_name = st.text_input(label="User Name", value="")
-
-# checkbox = st.checkbox('agree')
-# btn_clicked = st.button("Confirm", key='confirm_btn', disabled=(checkbox is False))
-
-# if btn_clicked:
-#     con = st.container()
-#     con.caption("Result")
-#     if not str(input_user_name):
-#         con.error("Input your name please~")
-#     else:
-#         con.write(f"Hello~ {str(input_user_name)}")
-
-#st.header("Two", divider=True)
-#col1, col2, col3 = st.columns(3)
-
-#with col1:
-# if user_name != '':
-    #st.write(f'{user_name} 안내입니다')
-    #if {user_name} == '현역입영대상' :
-        #st.write('1-3급은 현역입영대상입니다')
-  #else:
-    #st.write('👈  병역판정검사 처분결과를 선택하세요')
-
-#with col2:
-  #if user_emoji != '':
-    #st.write(f'{user_emoji}는 당신이 좋아하는 **이모티콘**입니다!')
-  #else:
-    #st.write('👈 **이모티콘**을 선택해 주세요!')
+with tab3:
+     st.write('아래 링크를 누르시면 병무청 민원포털로 연결됩니다.')
+     st.write('인증이 필요한 화면입니다.')
+     st.link_button("건강검진 결과서 바로가기", "https://mwpt.mma.go.kr/caisBMHS/index_mwps.jsp?menuNo=22255")
 
      
 st.divider()
 
-
-st.divider()
+#st.write("st.session_state 객체:", st.session_state)
