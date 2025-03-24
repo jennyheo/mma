@@ -3,7 +3,6 @@
 import streamlit as st
 import pandas as pd
 import pyarrow as pa
-from streamlit.server.server import Server
 
 st.set_page_config(layout="wide")
 #.streamlit/config.toml 파일에서 maincolor 지정 : 파란색
@@ -90,7 +89,7 @@ with tab2:
           st.write('체질량지수(BMI : Body Mass Index)는 신장과 체중의 비율을 사용한 체중의 객관적인 지수를 말합니다.')
 
      if st.button('혈압', use_container_width=True):
-          st.session_state['kkk'] = '혈압')
+          st.session_state['kkk'] = '혈압'
      if "혈압"==st.session_state.kkk: 
           st.write('성인의 정상적인 혈압 수치는 안정시 140/90mmHg로 유지되어야 합니다')
 
